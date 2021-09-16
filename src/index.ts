@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from "cors";
-
+require('dotenv').config()
 
 import mensajeRoutes from "./routes/mensaje.routes";
 import * as socket from './sockets/sockets';
@@ -34,9 +34,9 @@ io.on("connection", (cliente: any) => {
 
 
 
+const PORT = process.env.PORT || 3000;
 
-
-server.listen(3000, () => {
-    console.log(`Run server on port: 3000`);
+server.listen(PORT, () => {
+    console.log(`Run server on port: ${PORT}`);
 });
 

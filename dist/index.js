@@ -24,6 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
+require('dotenv').config();
 var mensaje_routes_1 = __importDefault(require("./routes/mensaje.routes"));
 var socket = __importStar(require("./sockets/sockets"));
 // import { Socket } from 'socket.io';
@@ -45,6 +46,7 @@ io.on("connection", function (cliente) {
     socket.desconectar(cliente);
     socket.mensaje(cliente, io);
 });
-server.listen(3000, function () {
-    console.log("Run server on port: 3000");
+var PORT = process.env.PORT || 3000;
+server.listen(PORT, function () {
+    console.log("Run server on port: " + PORT);
 });
